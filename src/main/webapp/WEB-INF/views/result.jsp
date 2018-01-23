@@ -8,6 +8,7 @@
 </head>
 <body>
 	<span>Hello ${msg}</span>
+	<%-- <span>Hello ${msg2}</span> --%>
 
 </body>
 </html>

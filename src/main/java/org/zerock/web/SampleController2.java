@@ -12,8 +12,9 @@ public class SampleController2 {
 
 	@RequestMapping("doC")
 	public String doC(@ModelAttribute("msg") String msg) {
+		// public String doC(@ModelAttribute("msg") String msg2) { // ok
+		// public String doC(String msg2) { // ok
 		logger.info("doC called....................");
 		return "result";
 	}
 }
-

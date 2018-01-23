@@ -20,7 +20,11 @@ public class SampleController4 {
 	}
 
 	@RequestMapping("/doF")
-	public void doF(@ModelAttribute String msg) {
+	// public void doF(@ModelAttribute String msg) {
+	// public void doF(@ModelAttribute("msg") String msg) { // ok
+	// public void doF(String msg) { // no
+	// public void doF(@ModelAttribute("msg") String msg2) { // ok
+	public void doF(String msg) { // ok
 		logger.info("doF called..................." + msg);
 	}
 }

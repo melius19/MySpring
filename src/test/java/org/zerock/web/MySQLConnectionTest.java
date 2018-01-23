@@ -24,5 +24,4 @@ public class MySQLConnectionTest {
 		}
 		// fail("Not yet implemented");
 	}
-
 }
