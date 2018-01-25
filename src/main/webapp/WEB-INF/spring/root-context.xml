@@ -12,6 +12,8 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
+	<!-- DB를 가리킴 MySQL... -->
+	<!-- 동적으로 객체생성함 ... 클래스메소드로 객체생성 ... 하는 방식 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"></property> -->
@@ -24,6 +26,9 @@
 		<property name="password" value="0000"></property>
 	</bean>
 
+	<!-- Session은 JDBC의 Connection -->
+	<!-- Session Factory 설정 -->
+	<!-- Session Factory가 Session을 관리해준다. 미리 Session을 만들어준다거나, 유휴Session 보유?? -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:/mybatis-config.xml">
@@ -33,10 +38,14 @@
 		</property>
 	</bean>
 
+	<!-- Session은 JDBC의 Connection -->
+	<!-- Session 설정 -->
+	<!-- SqlSession sqlSession = new sqlsessionTemplate(sqlSessionFactory) -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
+	<!-- 해당위치를 뒤져서 @Inject에 (sqlSession에) 객체 주입 // DI -->
 	<context:component-scan base-package="org.zerock.persistence" />
 </beans>

@@ -9,7 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.MemberVO;
 
-@Repository
+@Repository // DAO에 붙임, 저장소란뜻
+// @Autowired(스프링) == @inject(자바표준)
 public class MemberDAOImpl implements MemberDAO {
 
 	@Inject
@@ -26,6 +27,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public void insertMember(MemberVO vo) {
 		sqlSession.insert(namespace + ".insertMember", vo);
 	}
+	// 리턴타입 정수 ... 영향을준 레코드 수
 
 	@Override
 	public MemberVO readMember(String userid) throws Exception {
